@@ -3,15 +3,13 @@ import { fetchContacts, addContact, deleteContact } from "./contactsOps";
 
 export const initialContact = {
     contacts: {
-        contacts: {
-          items: [],
-          loading: false,
-          error: null
-        },
-        filters: {
-            name: ""
-        }
+        items: [],
+        loading: false,
+        error: null
     },
+    filters: {
+        name: ""
+    }
 };
 
 const handlePending = (state) => {
