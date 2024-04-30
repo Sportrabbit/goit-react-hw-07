@@ -5,10 +5,10 @@ export const initialContact = {
     contacts: {
         items: [],
         loading: false,
-        error: null
+        error: null,
     },
     filters: {
-        name: ""
+        name: "",
     }
 };
 
