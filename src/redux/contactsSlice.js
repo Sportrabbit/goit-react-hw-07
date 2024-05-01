@@ -10,7 +10,7 @@ export const initialContact = {
 };
 
 const handlePending = (state) => {
-    state.contacts.loading = true;
+    state.loading = true;
 };
 
 const handleFetchFulfilled = (state, action) => {
@@ -34,8 +34,8 @@ const handleDeleteFulfilled = (state, action) => {
 };
 
 const handleRejected = (state, action) => {
-    state.contacts.loading = false;
-    state.contacts.error = action.payload;
+    state.loading = false;
+    state.error = action.payload;
 };
 
 const contactSlice = createSlice({
