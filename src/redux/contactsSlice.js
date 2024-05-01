@@ -55,7 +55,7 @@ const contactSlice = createSlice({
     },
 });
 
-const selectFiltersState = (state) => state.filters;
+const selectFiltersState = (state) => state.filters.name;
 export const selectContacts = (state) => state.contacts.items;
 
 export const selectFilteredContacts = createSelector(
