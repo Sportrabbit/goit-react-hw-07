@@ -3,11 +3,9 @@ import { fetchContacts, addContact, deleteContact } from "./contactsOps";
 
 export const initialContact = {
 
-    contacts: {
         items: [],
         loading: false,
         error: null
-    },
 
 };
 
@@ -16,21 +14,21 @@ const handlePending = (state) => {
 };
 
 const handleFetchFulfilled = (state, action) => {
-    state.contacts.loading = false;
-    state.contacts.error = null;
-    state.contacts.items = action.payload;
+    state.loading = false;
+    state.error = null;
+    state.items = action.payload;
 };
 
 const handleAddFulfilled = (state, action) => {
-    state.contacts.loading = false;
-    state.contacts.error = null;
-    state.contacts.items.push(action.payload);
+    state.loading = false;
+    state.error = null;
+    state.items.push(action.payload);
 };
 
 const handleDeleteFulfilled = (state, action) => {
-    state.contacts.loading = false;
-    state.contacts.error = null;
-    state.contacts.items = state.contacts.items.filter(
+    state.loading = false;
+    state.error = null;
+    state.items = state.items.filter(
         (contact) => contact.id !== action.payload
     );
 };
@@ -57,22 +55,20 @@ const contactSlice = createSlice({
     },
 });
 
-const selectContactsState = (state) => state.contact;
 const selectFiltersState = (state) => state.filters;
 
 export const selectFilteredContacts = createSelector(
-    [selectContactsState, selectFiltersState],
-    (contactsState, filtersState) => {
-        const {items} = contactsState.contacts;
+    [selectContacts, selectFiltersState],
+    (contacts, filtersState) => {
         const {name} = filtersState;
         if (items.length > 0 && name.trim() !== "") {
-            return items.filter((contact) => 
+            return contacts.filter((contact) => 
         contact.name.toLowerCase().includes(name.trim().toLowerCase())
         );
         }
-        return items;
+        return contacts;
     }
 );
 
-export const selectContacts = (state) => state.contacts.contacts.items;
+export const selectContacts = (state) => state.contacts.items;
 export const contactsReducer = contactSlice.reducer;    
