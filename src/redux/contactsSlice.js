@@ -56,6 +56,7 @@ const contactSlice = createSlice({
 });
 
 const selectFiltersState = (state) => state.filters;
+export const selectContacts = (state) => state.contacts.items;
 
 export const selectFilteredContacts = createSelector(
     [selectContacts, selectFiltersState],
@@ -70,5 +71,4 @@ export const selectFilteredContacts = createSelector(
     }
 );
 
-export const selectContacts = (state) => state.contacts.items;
 export const contactsReducer = contactSlice.reducer;    
