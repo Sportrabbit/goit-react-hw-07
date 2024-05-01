@@ -2,14 +2,13 @@ import { createSlice, createSelector } from "@reduxjs/toolkit";
 import { fetchContacts, addContact, deleteContact } from "./contactsOps";
 
 export const initialContact = {
+
     contacts: {
         items: [],
         loading: false,
-        error: null,
+        error: null
     },
-    filters: {
-        name: "",
-    }
+
 };
 
 const handlePending = (state) => {
